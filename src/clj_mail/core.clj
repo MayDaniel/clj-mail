@@ -1,4 +1,4 @@
-(ns Clj-Mail.core
+(ns clj-mail.core
   (:import (javax.mail Session Message Authenticator PasswordAuthentication Transport Message$RecipientType Folder Flags$Flag)
            (javax.mail.internet MimeMessage InternetAddress)
            (java.util Properties))
