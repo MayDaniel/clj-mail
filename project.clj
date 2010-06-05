@@ -1,4 +1,4 @@
-(defproject clj-mail "1.0.0-SNAPSHOT"
+(defproject clj-mail "0.1.0"
   :description "FIXME: write"
   :repositories {"java-net" "http://download.java.net/maven/2"}
   :dependencies [[org.clojure/clojure "1.1.0"]
