@@ -27,6 +27,7 @@ Send and receive emails from Clojure.
 ## Installation
 
 - Leiningen.
+- Add `[clj-mail "0.1.0"]` to your dependencies in project.clj.
 
 ## License
 
