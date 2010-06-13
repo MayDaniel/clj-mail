@@ -4,24 +4,26 @@ Send and receive emails from Clojure.
 
 ## Usage
 
+At the moment, `send-msg` only supports text-only emails.
+
 ### Examples
 
     (send-msg :host "smtp.gmail.com"
-							:port 465 
-							:user "Email" 
-							:pass "Pass" 
-							:ssl true 
-							:to ["YamNad1@gmail.com"] 
-							:subject "Subject" 
-							:body "Body" 
-							:type rTO)
+	          :port 465
+	          :user "YamNad1@gmail.com"
+	          :pass "password"
+	          :ssl true
+	          :to ["YamNad1@gmail.com"]
+	          :subject "Subject"
+	          :body "Body"
+	          :type rTO)
 
-    (get-msgs :host "pop.gmail.com" 
-              :port 995 
-              :user "Email" 
-              :pass "Pass" 
-              :ssl true 
-              :protocol "pop3s" 
+    (get-msgs :host "pop.gmail.com"
+              :port 995
+              :user "YamNad1@gmail.com"
+              :pass "password"
+              :ssl true
+              :protocol "pop3s"
               :folder-name "INBOX")
 
 ## Installation
