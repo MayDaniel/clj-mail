@@ -28,7 +28,7 @@ At the moment, `send-msg` only supports text-only emails.
 
 ## Installation
 
-- Add `[clj-mail "0.1.1"]` to your dependencies.
+- Add `[clj-mail "0.1.0"]` to your dependencies.
 
 ## License
 

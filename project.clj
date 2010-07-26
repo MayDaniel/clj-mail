@@ -6,4 +6,4 @@
                  [javax.mail/mail "1.4.3"]]
   :dev-dependencies [[swank-clojure "1.2.1"]
                      [lein-clojars "0.5.0"]]
-  :namespaces [clj-mail.core])
+  :namespaces :all)
