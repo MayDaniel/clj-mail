@@ -13,7 +13,7 @@ At the moment, `send-msg` only supports text-only emails.
 	          :user "YamNad1@gmail.com"
 	          :pass "password"
 	          :ssl true
-	          :to ["YamNad1@gmail.com"]
+	          :to "YamNad1@gmail.com"
 	          :subject "Subject"
 	          :body "Body"
 	          :type rTO)
@@ -28,8 +28,7 @@ At the moment, `send-msg` only supports text-only emails.
 
 ## Installation
 
-- Leiningen.
-- Add `[clj-mail "0.1.0"]` to your dependencies in project.clj.
+- Add `[clj-mail "0.1.1"]` to your dependencies.
 
 ## License
 

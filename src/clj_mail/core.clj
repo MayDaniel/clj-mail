@@ -37,9 +37,7 @@
       (.setFrom (InternetAddress. from))
       (.setSubject subject)
       (.setText body))
-    (if (sequential? to)
-      (map (fn [s] (.addRecipient msg type (InternetAddress. s))) to)
-      (.addRecipient msg type (InternetAddress. to))) msg))
+      (.addRecipient msg type (InternetAddress. to)) msg))
 
 (defn get-store [session host user pass protocol]
   (let [store (.getStore session protocol)]
