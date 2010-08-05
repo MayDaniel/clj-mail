@@ -44,17 +44,17 @@
            user-info
            properties)))
 
-(defmacro with-folder [sess fname fname2 & body]
+(defmacro with-folder [sess folder fname & body]
   `(let [store# (.getStore (:session ~sess)
                            (-> ~sess :user-info :in-protocol))]
      (.connect store#
                (-> ~sess :user-info :in-host)
                (-> ~sess :user-info :username)
                (-> ~sess :user-info :pass))
-     (let [~fname (.getFolder store# ~fname2)]
-       (.open ~fname Folder/READ_WRITE)
+     (let [~folder (.getFolder store# ~fname)]
+       (.open ~folder Folder/READ_WRITE)
        (let [result# (do ~@body)]
-         (.close ~fname false)
+         (.close ~folder false)
          (.close store#)
          result#))))
 
@@ -86,4 +86,17 @@
 
 (defn get-msgs->maps [sess folder-name]
   (with-folder sess folder folder-name
+    (doall (map msg->map (seq (.getMessages folder))))))
+
+(defn simple-send [{:keys [to-coll subject body username pass port host ssl? rtype]}]
+  (let [props (mk-props host port username ssl?)
+        session (mk-session props username pass)
+        msg (mk-msg text-msg session {:rtype rtype
+                                      :to-coll to-coll
+                                      :subject subject
+                                      :body body})]
+    (send-msg session msg)))
+
+(defn simple-get [{:keys [host port username pass protocol folder-name]}]
+  (with-folder (mk-session (Properties.) username pass) folder folder-name
     (doall (map msg->map (seq (.getMessages folder))))))
