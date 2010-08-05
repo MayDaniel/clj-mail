@@ -91,10 +91,10 @@
 (defn simple-send [{:keys [to-coll subject body username pass port host ssl? rtype]}]
   (let [props (mk-props host port username ssl?)
         session (mk-session props username pass)
-        msg (mk-msg text-msg session {:rtype rtype
-                                      :to-coll to-coll
-                                      :subject subject
-                                      :body body})]
+        msg (text-msg session {:rtype rtype
+                               :to-coll to-coll
+                               :subject subject
+                               :body body})]
     (send-msg session msg)))
 
 (defn simple-get [{:keys [host port username pass protocol folder-name]}]
