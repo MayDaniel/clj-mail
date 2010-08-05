@@ -4,31 +4,29 @@ Send and receive emails from Clojure.
 
 ## Usage
 
-At the moment, `send-msg` only supports text-only emails.
+At the moment, multi-part emails aren't supported.
 
 ### Examples
 
-    (send-msg :host "smtp.gmail.com"
-	          :port 465
-	          :user "YamNad1@gmail.com"
-	          :pass "password"
-	          :ssl true
-	          :to "YamNad1@gmail.com"
-	          :subject "Subject"
-	          :body "Body"
-	          :type rTO)
+    (def sess (mk-Sess {:username "YamNad1@gmail.com"
+                        :pass "Password"
+                        :ssl? true
+                        :in-host "pop.gmail.com"
+                        :in-protocol "pop3s"
+                        :in-port 995
+                        :out-host "smtp.gmail.com"
+                        :out-protocol "smtp"
+                        :out-port 465})
 
-    (get-msgs :host "pop.gmail.com"
-              :port 995
-              :user "YamNad1@gmail.com"
-              :pass "password"
-              :ssl true
-              :protocol "pop3s"
-              :folder-name "INBOX")
+    (send-msg sess (text-msg {:to-coll ["YamNad1@gmail.com"]
+                              :subject "Subject"
+                              :body "Body"}))
+
+    (get-msgs->maps sess "INBOX)
 
 ## Installation
 
-- Add `[clj-mail "0.1.0"]` to your dependencies.
+- Add `[clj-mail "0.1.1"]` to your dependencies.
 
 ## License
 
