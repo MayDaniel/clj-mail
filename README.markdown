@@ -8,7 +8,7 @@ At the moment, multi-part emails aren't supported.
 
 ### Examples
 
-For those who preferred the previous design, use `simple-get` and `simple-send`, or revert to version `0.1.0`.
+For those who preferred the previous design, use `simple-get` and `simple-send`.
 
     (def sess (mk-Sess {:username "YamNad1@gmail.com"
                         :pass "Password"
@@ -24,7 +24,7 @@ For those who preferred the previous design, use `simple-get` and `simple-send`,
                               :subject "Subject"
                               :body "Body"}))
 
-    (get-msgs->maps sess "INBOX)
+    (get-msgs->maps sess "INBOX")
 
 ## Installation
 
