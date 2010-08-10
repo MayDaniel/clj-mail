@@ -3,8 +3,7 @@
            [javax.mail.internet MimeMessage MimeMultipart InternetAddress MimeBodyPart]
            [javax.activation FileDataSource URLDataSource DataHandler]
            [java.util Properties]
-           [java.io File])
-  (use [clojure.set :only [rename-keys]]))
+           [java.io File]))
 
 (def rTO (Message$RecipientType/TO))
 (def rCC (Message$RecipientType/CC))
