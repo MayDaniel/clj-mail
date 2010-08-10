@@ -8,7 +8,7 @@ At the moment, multi-part emails aren't supported.
 
 ### Examples
 
-For those who preferred the previous design, use `simple-get` and `simple-send`.
+For those who preferred the previous design, revert to version 0.1.0.
 
     (def sess (mk-Sess {:username "YamNad1@gmail.com"
                         :pass "Password"

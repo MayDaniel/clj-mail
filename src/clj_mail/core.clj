@@ -3,7 +3,8 @@
            [javax.mail.internet MimeMessage MimeMultipart InternetAddress MimeBodyPart]
            [javax.activation FileDataSource URLDataSource DataHandler]
            [java.util Properties]
-           [java.io File]))
+           [java.io File])
+  (use [clojure.set :only [rename-keys]]))
 
 (def rTO (Message$RecipientType/TO))
 (def rCC (Message$RecipientType/CC))
@@ -38,7 +39,8 @@
 
 (defn mk-Sess [{:keys [username pass ssl?
                        in-host in-protocol in-port
-                       out-host out-protocol out-port] :as user-info}]
+                       out-host out-protocol out-port]
+                :as user-info}]
   (let [properties (mk-props out-host out-port username ssl?)]
     (Sess. (mk-session properties username pass)
            user-info
@@ -86,17 +88,4 @@
 
 (defn get-msgs->maps [sess folder-name]
   (with-folder sess folder folder-name
-    (doall (map msg->map (seq (.getMessages folder))))))
-
-(defn simple-send [{:keys [to-coll subject body username pass port host ssl? rtype]}]
-  (let [props (mk-props host port username ssl?)
-        session (mk-session props username pass)
-        msg (text-msg session {:rtype rtype
-                               :to-coll to-coll
-                               :subject subject
-                               :body body})]
-    (send-msg session msg)))
-
-(defn simple-get [{:keys [host port username pass protocol folder-name]}]
-  (with-folder (mk-session (Properties.) username pass) folder folder-name
     (doall (map msg->map (seq (.getMessages folder))))))
