@@ -14,4 +14,4 @@ Wrap a body with `with-session`.
 
 ### License
 
-[Eclipse Public License - v 1.0](https://github.com/MayDaniel/clj-mail/blob/master/project.clj)
+[Eclipse Public License - v 1.0](https://github.com/MayDaniel/clj-mail/blob/master/LICENSE)
