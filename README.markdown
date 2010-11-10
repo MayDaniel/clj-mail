@@ -1,35 +1,17 @@
-# Clj-Mail
-
-Send and receive emails from Clojure.
-
-## Usage
-
-At the moment, multi-part emails aren't supported.
-
 ### Examples
 
-For those who preferred the previous design, temporarily revert to version 0.1.0.
+Wrap a body with `with-session`.
 
-    (def sess (mk-Sess {:username "YamNad1@gmail.com"
-                        :pass "Password"
-                        :ssl? true
-                        :in-host "pop.gmail.com"
-                        :in-protocol "pop3s"
-                        :in-port 995
-                        :out-host "smtp.gmail.com"
-                        :out-protocol "smtp"
-                        :out-port 465})
+    (with-session "Foo@bar.baz" "MyPassword" "smtp.foobar.baz" 465 "smtp" true
+      (send-email (text-email ["YamNad1@gmail.com"] "Subject" "Body")))           
 
-    (send-msg sess (text-msg {:to-coll ["YamNad1@gmail.com"]
-                              :subject "Subject"
-                              :body "Body"}))
+    (with-session "Foo@bar.baz" "MyPassword" "pop.foobar.baz" 995 "pop3s" true
+      (folder->records "INBOX"))
 
-    (get-msgs->maps sess "INBOX")
+### Getting
 
-## Installation
+`:dependencies [[clj-mail "0.1.5"] ...]`
 
-- Add `[clj-mail "0.1.1"]` to your dependencies.
+### License
 
-## License
-
-Clj-Mail is licensed under the Eclipse Public License 1.0 (http://opensource.org/licenses/eclipse-1.0.php)
+[Eclipse Public License - v 1.0](https://github.com/MayDaniel/clj-mail/blob/master/project.clj)
