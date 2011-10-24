@@ -3,7 +3,7 @@
            [javax.mail.internet MimeMessage InternetAddress]
            [java.util Properties]))
 
-(declare *session*)
+(declare ^:dynamic *session*)
 
 (def rTO (Message$RecipientType/TO))
 (def rCC (Message$RecipientType/CC))
