@@ -2,10 +2,10 @@
 
 Wrap a body with `with-session`.
 
-    (with-session "Foo@bar.baz" "MyPassword" "smtp.foobar.baz" 465 "smtp" true
-      (send-email (text-email ["YamNad1@gmail.com"] "Subject" "Body")))           
+    (with-session "foo@example.com" "my password" "smtp.example.com" 465 "smtp" true
+      (send-email (text-email ["bar@example.com"] "Subject" "Body")))           
 
-    (with-session "Foo@bar.baz" "MyPassword" "pop.foobar.baz" 995 "pop3s" true
+    (with-session "foo@example.com" "my-password" "pop.example.com" 995 "pop3s" true
       (folder->records "INBOX"))
 
 ### Getting
